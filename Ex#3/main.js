@@ -1,3 +1,5 @@
 const read = require('./read');
 
-read('name.txt', text => console.log(text));
+read('name.txt')
+    .then(text => console.log(text))
+    .catch(err => console.log(err));

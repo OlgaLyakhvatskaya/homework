@@ -1,10 +1,13 @@
 const fs = require('fs');
 
-const read = (name, cb) =>  fs.readFile(name, (err, data) => {
-    return new Promise((res, rej) => {
-        res(cb(data.toString('utf8')))
-        rej(err);
+const read = (name) =>  {
+    return new Promise( (res, rej) => {
+        fs.readFile(name, (err, data) => {
+            if (err) return rej(err)
+            res(data.toString('utf8'))
+        })
     })
-})
+};
+
 
 module.exports = read;
