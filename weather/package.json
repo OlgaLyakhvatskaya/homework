@@ -1,0 +1,29 @@
+{
+  "name": "weather",
+  "version": "0.0.1",
+  "description": "get weather",
+  "main": "main.js",
+  "dependencies": {
+    "file-system": "^2.2.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node main.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/OlgaLyakhvatskaya/homework.git"
+  },
+  "keywords": [
+    "get",
+    "create",
+    "html"
+  ],
+  "author": "Olga",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/OlgaLyakhvatskaya/homework/issues"
+  },
+  "homepage": "https://github.com/OlgaLyakhvatskaya/homework#readme"
+}
