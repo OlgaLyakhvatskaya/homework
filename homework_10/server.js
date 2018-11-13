@@ -3,7 +3,6 @@ const fs = require('fs');
 const date = new Date();
 const now = `<p>${date.getDate()}.${date.getMonth() + 1}.${date.getFullYear()}</p>`;
 
- 
 const server = http.createServer(
   (req, res) => {
 
@@ -12,38 +11,29 @@ const server = http.createServer(
     const css = req.url.includes('.css');
     const urlFile = req.url.replace('/', 'front-end/');
     
-    if (isHtml) {
-      fs.readFile(urlFile, (err, data) => {
-        res.setHeader('Content-Type', 'text/html');
-        if(err) return res.end(`<strong>${err}</strong>`);
-        res.end(String(data + now));
+    const arg = (url) => new Promise((resolve, rejecte) => {
+      fs.readFile(url, (err, file) => {
+        if (isHtml) {
+          res.setHeader('Content-Type', 'text/html');
+          resolve(res.end(String(file + now)));
+        }
+        if (js) {
+          res.setHeader('Content-Type', 'application/javascript');
+        }
+        if (css) { 
+          res.setHeader('Content-Type', 'text/css');
+        }
+        if (err) return rejecte(res.end(`<strong>${err}</strong>`));
+        resolve(res.end(file));
       })
-    } 
-
-    if (js) {
-      fs.readFile(urlFile, (err, data) => {
-        res.setHeader('Content-Type', 'application/javascript');
-        if(err) return res.end(`<strong>${err}</strong>`);
-        res.end(data);
-      })
-    } 
-
-    if(css){
-      fs.readFile(urlFile, (err, data) => {
-        res.setHeader('Content-Type', 'text/css');
-        if(err) return res.end(`<strong>${err}</strong>`);
-        res.end(String(data + now));
-      })
-    }
-
-    fs.readFile(urlFile, (err, data) => {
-      if(err) return res.end(`<strong>${err}</strong>`);
-      res.end(data);
     })
-  });
-  
-  server.listen(5600, () => {
-    console.log('Server is listening on port: 5600');
-  });
-  
+
+    arg(urlFile)
+      .then(result => result)
+      .catch(err => err)
+});
+    
+server.listen(5600, () => {
+  console.log('Server is listening on port: 5600');
+});
   
