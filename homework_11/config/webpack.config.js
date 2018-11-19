@@ -1,6 +1,20 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const package = require('../package');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const args = process.argv;
+const isFileCss = args.includes('--styles');
+
+const plugins = [
+  new HtmlWebpackPlugin ({
+    template: './index.html',
+    title: package.name,
+    varsion: package.version
+  })
+]
+if (isFileCss) {
+  plugins.push(new MiniCssExtractPlugin({ filename: 'style.css' }));
+}
 
 module.exports = {
     entry: './app.js' ,
@@ -22,15 +36,18 @@ module.exports = {
                 presets: ['@babel/preset-env']
               }
             }
-          }
+          },
+          {
+            test: /\.s?css$/,
+            use: [ 
+              isFileCss ? MiniCssExtractPlugin : 'style-loader',
+              'css-loader',
+              'sass-loader'
+            ]
+          } 
         ]
     },
-
-    plugins: [new HtmlWebpackPlugin({
-        template: './index.html',
-        title: package.name
-    })],
-
+    plugins,
     optimization: {
         splitChunks: {
           chunks: 'all'

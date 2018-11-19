@@ -154,6 +154,39 @@
 /************************************************************************/
 /******/ ({
 
+/***/ "../node_modules/css-loader/index.js!../node_modules/sass-loader/lib/loader.js!./app.scss":
+/*!***************************************************************************************!*\
+  !*** ../node_modules/css-loader!../node_modules/sass-loader/lib/loader.js!./app.scss ***!
+  \***************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+eval("exports = module.exports = __webpack_require__(/*! ../node_modules/css-loader/lib/css-base.js */ \"../node_modules/css-loader/lib/css-base.js\")(false);\n// imports\n\n\n// module\nexports.push([module.i, \"body {\\n  background: #ff0000; }\\n\", \"\"]);\n\n// exports\n\n\n//# sourceURL=webpack:///./app.scss?../node_modules/css-loader!../node_modules/sass-loader/lib/loader.js");
+
+/***/ }),
+
+/***/ "../node_modules/css-loader/index.js!../node_modules/sass-loader/lib/loader.js!./js/footer/footer.scss":
+/*!****************************************************************************************************!*\
+  !*** ../node_modules/css-loader!../node_modules/sass-loader/lib/loader.js!./js/footer/footer.scss ***!
+  \****************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+eval("exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loader/lib/css-base.js */ \"../node_modules/css-loader/lib/css-base.js\")(false);\n// imports\n\n\n// module\nexports.push([module.i, \".footer {\\n  background: #333;\\n  color: #fff; }\\n\", \"\"]);\n\n// exports\n\n\n//# sourceURL=webpack:///./js/footer/footer.scss?../node_modules/css-loader!../node_modules/sass-loader/lib/loader.js");
+
+/***/ }),
+
+/***/ "../node_modules/css-loader/index.js!../node_modules/sass-loader/lib/loader.js!./js/header/header.scss":
+/*!****************************************************************************************************!*\
+  !*** ../node_modules/css-loader!../node_modules/sass-loader/lib/loader.js!./js/header/header.scss ***!
+  \****************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+eval("exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loader/lib/css-base.js */ \"../node_modules/css-loader/lib/css-base.js\")(false);\n// imports\n\n\n// module\nexports.push([module.i, \"\", \"\"]);\n\n// exports\n\n\n//# sourceURL=webpack:///./js/header/header.scss?../node_modules/css-loader!../node_modules/sass-loader/lib/loader.js");
+
+/***/ }),
+
 /***/ "./app.js":
 /*!****************!*\
   !*** ./app.js ***!
@@ -161,7 +194,18 @@
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("var header = __webpack_require__(/*! ./js/header */ \"./js/header.js\");\n\nvar footer = __webpack_require__(/*! ./js/footer */ \"./js/footer.js\");\n\nvar main = __webpack_require__(/*! ./js/main */ \"./js/main.js\");\n\nvar $ = __webpack_require__(/*! jquery */ \"../node_modules/jquery/dist/jquery.js\");\n\n$('body').append(header, main, footer);\n\n//# sourceURL=webpack:///./app.js?");
+eval("var header = __webpack_require__(/*! ./js/header/header */ \"./js/header/header.js\");\n\nvar footer = __webpack_require__(/*! ./js/footer/footer */ \"./js/footer/footer.js\");\n\nvar main = __webpack_require__(/*! ./js/main/main */ \"./js/main/main.js\");\n\nvar $ = __webpack_require__(/*! jquery */ \"../node_modules/jquery/dist/jquery.js\");\n\n__webpack_require__(/*! ./app.scss */ \"./app.scss\");\n\n$('body').append(header, main, footer);\n\n//# sourceURL=webpack:///./app.js?");
+
+/***/ }),
+
+/***/ "./app.scss":
+/*!******************!*\
+  !*** ./app.scss ***!
+  \******************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+eval("\nvar content = __webpack_require__(/*! !../node_modules/css-loader!../node_modules/sass-loader/lib/loader.js!./app.scss */ \"../node_modules/css-loader/index.js!../node_modules/sass-loader/lib/loader.js!./app.scss\");\n\nif(typeof content === 'string') content = [[module.i, content, '']];\n\nvar transform;\nvar insertInto;\n\n\n\nvar options = {\"hmr\":true}\n\noptions.transform = transform\noptions.insertInto = undefined;\n\nvar update = __webpack_require__(/*! ../node_modules/style-loader/lib/addStyles.js */ \"../node_modules/style-loader/lib/addStyles.js\")(content, options);\n\nif(content.locals) module.exports = content.locals;\n\nif(false) {}\n\n//# sourceURL=webpack:///./app.scss?");
 
 /***/ }),
 
@@ -176,36 +220,58 @@ eval("var $ = __webpack_require__(/*! jquery */ \"../node_modules/jquery/dist/jq
 
 /***/ }),
 
-/***/ "./js/footer.js":
-/*!**********************!*\
-  !*** ./js/footer.js ***!
-  \**********************/
+/***/ "./js/footer/footer.js":
+/*!*****************************!*\
+  !*** ./js/footer/footer.js ***!
+  \*****************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("var builder = __webpack_require__(/*! ./elementBuilder */ \"./js/elementBuilder.js\");\n\nvar content = '<p>Easycode 2017 (c)</p>';\nmodule.exports = builder('footer', content, 'footer');\n\n//# sourceURL=webpack:///./js/footer.js?");
+eval("var builder = __webpack_require__(/*! ../elementBuilder */ \"./js/elementBuilder.js\");\n\nvar content = '<p>Easycode 2017 (c)</p>';\n\n__webpack_require__(/*! ./footer.scss */ \"./js/footer/footer.scss\");\n\nmodule.exports = builder('footer', content, 'footer');\n\n//# sourceURL=webpack:///./js/footer/footer.js?");
 
 /***/ }),
 
-/***/ "./js/header.js":
-/*!**********************!*\
-  !*** ./js/header.js ***!
-  \**********************/
+/***/ "./js/footer/footer.scss":
+/*!*******************************!*\
+  !*** ./js/footer/footer.scss ***!
+  \*******************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("var builder = __webpack_require__(/*! ./elementBuilder */ \"./js/elementBuilder.js\");\n\nvar content = '<a href=\"/\">Logo</a>';\nmodule.exports = builder('header', content, 'header');\n\n//# sourceURL=webpack:///./js/header.js?");
+eval("\nvar content = __webpack_require__(/*! !../../../node_modules/css-loader!../../../node_modules/sass-loader/lib/loader.js!./footer.scss */ \"../node_modules/css-loader/index.js!../node_modules/sass-loader/lib/loader.js!./js/footer/footer.scss\");\n\nif(typeof content === 'string') content = [[module.i, content, '']];\n\nvar transform;\nvar insertInto;\n\n\n\nvar options = {\"hmr\":true}\n\noptions.transform = transform\noptions.insertInto = undefined;\n\nvar update = __webpack_require__(/*! ../../../node_modules/style-loader/lib/addStyles.js */ \"../node_modules/style-loader/lib/addStyles.js\")(content, options);\n\nif(content.locals) module.exports = content.locals;\n\nif(false) {}\n\n//# sourceURL=webpack:///./js/footer/footer.scss?");
 
 /***/ }),
 
-/***/ "./js/main.js":
-/*!********************!*\
-  !*** ./js/main.js ***!
-  \********************/
+/***/ "./js/header/header.js":
+/*!*****************************!*\
+  !*** ./js/header/header.js ***!
+  \*****************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("var builder = __webpack_require__(/*! ./elementBuilder */ \"./js/elementBuilder.js\");\n\nvar date = new Date();\nvar caption = '<h1>Hello</h1>';\nvar content = caption + date.toLocaleDateString();\nmodule.exports = builder('main', content, 'main');\n\n//# sourceURL=webpack:///./js/main.js?");
+eval("var builder = __webpack_require__(/*! ../elementBuilder */ \"./js/elementBuilder.js\");\n\nvar content = '<a href=\"/\">Logo</a>';\n\n__webpack_require__(/*! ./header.scss */ \"./js/header/header.scss\");\n\nmodule.exports = builder('header', content, 'header');\n\n//# sourceURL=webpack:///./js/header/header.js?");
+
+/***/ }),
+
+/***/ "./js/header/header.scss":
+/*!*******************************!*\
+  !*** ./js/header/header.scss ***!
+  \*******************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+eval("\nvar content = __webpack_require__(/*! !../../../node_modules/css-loader!../../../node_modules/sass-loader/lib/loader.js!./header.scss */ \"../node_modules/css-loader/index.js!../node_modules/sass-loader/lib/loader.js!./js/header/header.scss\");\n\nif(typeof content === 'string') content = [[module.i, content, '']];\n\nvar transform;\nvar insertInto;\n\n\n\nvar options = {\"hmr\":true}\n\noptions.transform = transform\noptions.insertInto = undefined;\n\nvar update = __webpack_require__(/*! ../../../node_modules/style-loader/lib/addStyles.js */ \"../node_modules/style-loader/lib/addStyles.js\")(content, options);\n\nif(content.locals) module.exports = content.locals;\n\nif(false) {}\n\n//# sourceURL=webpack:///./js/header/header.scss?");
+
+/***/ }),
+
+/***/ "./js/main/main.js":
+/*!*************************!*\
+  !*** ./js/main/main.js ***!
+  \*************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+eval("var builder = __webpack_require__(/*! ../elementBuilder */ \"./js/elementBuilder.js\");\n\nvar date = new Date();\nvar caption = '<h1>Hello</h1>';\nvar content = caption + date.toLocaleDateString();\nmodule.exports = builder('main', content, 'main');\n\n//# sourceURL=webpack:///./js/main/main.js?");
 
 /***/ })
 
