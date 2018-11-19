@@ -1,4 +1,4 @@
-const builder = require('./elementBuilder');
+const builder = require('../elementBuilder');
 const date = new Date();
 const caption = '<h1>Hello</h1>'
 const content = caption + date.toLocaleDateString();
