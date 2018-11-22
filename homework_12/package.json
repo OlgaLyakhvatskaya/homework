@@ -1,0 +1,43 @@
+{
+  "name": "homework_11",
+  "version": "0.0.1",
+  "description": "node.js server - tasks",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "server": "node server.js",
+    "start": "npx webpack --config=config/webpack.config.js --watch --styles"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/OlgaLyakhvatskaya/homework.git"
+  },
+  "keywords": [
+    "node.js",
+    "server"
+  ],
+  "author": "Olga",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/OlgaLyakhvatskaya/homework/issues"
+  },
+  "homepage": "https://github.com/OlgaLyakhvatskaya/homework#readme",
+  "devDependencies": {
+    "@babel/core": "^7.1.5",
+    "@babel/preset-env": "^7.1.5",
+    "babel-core": "^6.26.3",
+    "babel-loader": "^8.0.4",
+    "babel-preset-env": "^1.7.0",
+    "css-loader": "^1.0.1",
+    "html-webpack-plugin": "^3.2.0",
+    "mini-css-extract-plugin": "^0.4.4",
+    "node-sass": "^4.10.0",
+    "sass-loader": "^7.1.0",
+    "style-loader": "^0.23.1",
+    "webpack": "^4.25.1",
+    "webpack-cli": "^3.1.2"
+  },
+  "dependencies": {
+    "jquery": "^3.3.1"
+  }
+}
