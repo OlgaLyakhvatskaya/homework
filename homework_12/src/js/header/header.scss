@@ -1,0 +1,16 @@
+@import "src/scss/variables.scss";
+@import "src/scss/mixin.scss";
+
+.header{
+    background: $index-bg;
+    color: $index-color-text;
+    padding: 20px;
+    a{
+        @include cont-wrapp;
+        display: block;
+        color: $index-color-text;
+        text-transform: uppercase;
+        font-weight: bold;  
+        text-decoration: none;
+    }
+}
