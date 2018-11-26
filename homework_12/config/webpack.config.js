@@ -4,18 +4,20 @@ const package = require('../package');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const args = process.argv;
 const isFileCss = args.includes('--styles');
-const date = Date.now();
+const webpack = require('webpack');
+// const date = Date.now();
 
 const plugins = [
   new HtmlWebpackPlugin ({
     template: './index.html',
     title: package.name,
     varsion: package.version
-  })
+  }),
+  new webpack.HotModuleReplacementPlugin()
 ]
 if (isFileCss) {
   plugins.push(new MiniCssExtractPlugin({ 
-    filename: `style-[hash]-${date}.css`,
+    filename: `style.css`,
   }));
 }
 
@@ -56,5 +58,10 @@ module.exports = {
           chunks: 'all'
         },
     },
-       
+    devServer: {
+      contentBase: path.resolve(__dirname, '../dist'),
+      publicPath: '/',
+      port: 9000,
+      hot: true
+    }    
 }

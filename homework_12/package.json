@@ -1,11 +1,11 @@
 {
-  "name": "homework_11",
+  "name": "homework_12",
   "version": "0.0.1",
   "description": "node.js server - tasks",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "server": "node server.js",
+    "test": "npx karma start karma.conf.js",
+    "server": "npx webpack-dev-server --config=config/webpack.config.js --open",
     "start": "npx webpack --config=config/webpack.config.js --watch --styles"
   },
   "repository": {
@@ -28,14 +28,24 @@
     "babel-core": "^6.26.3",
     "babel-loader": "^8.0.4",
     "babel-preset-env": "^1.7.0",
+    "chai": "^4.2.0",
     "css-loader": "^1.0.1",
     "html-webpack-plugin": "^3.2.0",
+    "karma": "^3.1.1",
+    "karma-chrome-launcher": "^2.2.0",
+    "karma-mocha": "^1.3.0",
+    "karma-mocha-reporter": "^2.2.5",
+    "karma-phantomjs-launcher": "^1.0.4",
+    "karma-webpack": "^3.0.5",
     "mini-css-extract-plugin": "^0.4.4",
+    "mocha": "^5.2.0",
     "node-sass": "^4.10.0",
     "sass-loader": "^7.1.0",
+    "sinon": "^7.1.1",
     "style-loader": "^0.23.1",
     "webpack": "^4.25.1",
-    "webpack-cli": "^3.1.2"
+    "webpack-cli": "^3.1.2",
+    "webpack-dev-server": "^3.1.10"
   },
   "dependencies": {
     "jquery": "^3.3.1"
