@@ -1,8 +1,0 @@
-@import "src/scss/variables.scss";
-@import "src/scss/mixin.scss";
-
-
-.main{
-    @include cont-wrapp;
-    margin: 20px auto; 
-}
