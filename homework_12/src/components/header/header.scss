@@ -1,0 +1,23 @@
+@import "src/scss/variables.scss";
+@import "src/scss/mixins.scss";
+
+.header{
+    background: $color1;
+    padding: 20px 0;
+    grid-area: header;
+    flex: 0 0 auto;
+    .container{
+        @include cont-wrapp();
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        strong{
+            a{
+                @include text();
+                color: $color2;
+                text-decoration: none;
+            }
+        }
+    }
+}

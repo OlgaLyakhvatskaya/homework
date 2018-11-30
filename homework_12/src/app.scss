@@ -1,0 +1,15 @@
+@import "./scss/variables.scss";
+@import "./scss/mixins.scss";
+html{
+    height: 100%; 
+}
+body{
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    #app{
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+    }
+}

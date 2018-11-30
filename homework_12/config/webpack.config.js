@@ -5,7 +5,6 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const args = process.argv;
 const isFileCss = args.includes('--styles');
 const webpack = require('webpack');
-// const date = Date.now();
 
 const plugins = [
   new HtmlWebpackPlugin ({

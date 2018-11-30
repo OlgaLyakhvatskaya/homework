@@ -1,0 +1,15 @@
+@import "src/scss/variables.scss";
+@import "src/scss/mixins.scss";
+
+.footer{
+    background: $color1;
+    padding: 20px 0;
+    flex: 0 0 auto;
+    .container{
+        @include cont-wrapp();
+        strong{
+            @include text();
+            color: $color2;
+        }
+    }
+}

@@ -1,0 +1,15 @@
+@import "src/scss/variables.scss";
+@import "src/scss/mixins.scss";
+
+.index-menu{
+    a{
+        @include text();
+        color: $color2;
+        text-decoration: none;
+        margin: 0 10px; 
+        @include transition(color .3s ease-in-out);
+        &:hover{
+            color: $color3; 
+        }
+    }
+}
