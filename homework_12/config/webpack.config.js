@@ -7,6 +7,9 @@ const isFileCss = args.includes('--styles');
 const webpack = require('webpack');
 
 const plugins = [
+  new webpack.ProvidePlugin({
+    React: 'react'
+  }),
   new HtmlWebpackPlugin ({
     template: './index.html',
     title: package.name,
@@ -31,6 +34,12 @@ module.exports = {
 
     module: {
         rules: [
+          {
+            enforce: 'pre',
+            test: /\.js$/,
+            exclude: /node_modules/,
+            loader: 'eslint-loader',
+          },           
           {
             test: /\.js$/,
             exclude: /(node_modules|bower_components)/,
