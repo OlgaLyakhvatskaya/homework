@@ -1,12 +1,10 @@
 export const CreateUser = (props) => {
-  const { firstName } = props;
-  const { lastName } = props;
-  const { age } = props;
+  const { firstName, lastName, age } = props;
   return (
     <li>
-      firstName = {firstName},
-      age = {age},
-      lastName = {lastName}
+      <span>Name: <strong>{firstName}</strong></span>
+      <span>Last name: <strong>{lastName}</strong></span>
+      <span>Age:<strong>{age}</strong></span>
     </li>
   );
 };
