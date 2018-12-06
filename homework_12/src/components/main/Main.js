@@ -15,7 +15,7 @@ const Main = () => {
         <Aside />
         <div className="content">
           <Hello date={new Date().getHours()} name="Olga" />
-          <List from="5" to="8" even />
+          <List from="5" to="8" />
           <Generate users={listUsers} />
         </div>
       </div>
