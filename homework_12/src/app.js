@@ -9,7 +9,7 @@ import Main from './components/main';
 const Wrapper = (
   <>
     <Header />
-    <Main />
+    <Main title="hi"/>
     <Footer />
   </>
 );
