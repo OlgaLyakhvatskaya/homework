@@ -8,14 +8,15 @@ const webpack = require('webpack');
 
 const plugins = [
   new webpack.ProvidePlugin({
-    React: 'react'
+    React: 'react',
+    Component: ['react', 'Component']
   }),
   new HtmlWebpackPlugin ({
     template: './index.html',
     title: package.name,
     varsion: package.version
   }),
-  new webpack.HotModuleReplacementPlugin()
+  new webpack.HotModuleReplacementPlugin(),
 ]
 if (isFileCss) {
   plugins.push(new MiniCssExtractPlugin({ 
@@ -34,19 +35,22 @@ module.exports = {
 
     module: {
         rules: [
-          {
-            enforce: 'pre',
-            test: /\.js$/,
-            exclude: /node_modules/,
-            loader: 'eslint-loader',
-          },           
+          // {
+          //   enforce: 'pre',
+          //   test: /\.js$/,
+          //   exclude: /node_modules/,
+          //   loader: 'eslint-loader',
+          // },           
           {
             test: /\.js$/,
             exclude: /(node_modules|bower_components)/,
             use: {
               loader: 'babel-loader',
               options: {
-                presets: ['@babel/preset-env','@babel/preset-react']
+                presets: ['@babel/preset-env','@babel/preset-react'],
+                plugins: [
+                  '@babel/plugin-proposal-class-properties',
+                ]
               }
             }
           },
