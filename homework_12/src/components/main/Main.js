@@ -4,6 +4,7 @@ import Hello from '../hello/index';
 import List from '../list/index';
 import Generate from '../generate/index';
 import Counter from '../counter/index';
+import ListSort from '../listsort/index';
 
 const listUsers = [
   { firstName: 'Teresa', lastName: 'Testva', age: 46 },
@@ -22,6 +23,9 @@ class Main extends React.Component {
   showUserName(username) {
     alert(username);
   }
+  showUserInfo(user) {
+    alert(user.username)
+  }
 
   render() {
     const { title } = this.props;
@@ -33,12 +37,9 @@ class Main extends React.Component {
           <div className="content">
             <p>{title}</p>
             <Counter />
-            <ul>
-              {users.map(({ name, id, username }) => 
-              <li key={id} onClick={() => this.showUserName(username)}>{name}</li>)}
-            </ul>
             <Hello date={new Date().getHours()} name="Olga" />
-            <List from="5" to="8" odd />
+            <List items={users} handleClick={this.showUserInfo} />
+            <ListSort from="10" to="30" even />
             <Generate users={listUsers} />
           </div>
         </div>
