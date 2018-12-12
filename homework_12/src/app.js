@@ -13,5 +13,4 @@ const Wrapper = (
     <Footer />
   </>
 );
-
 ReactDom.render(Wrapper, document.getElementById('app'));
