@@ -11,5 +11,9 @@ body{
         display: flex;
         flex-direction: column;
         height: 100%;
+        p, strong{
+            margin-top:0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
     }
 }

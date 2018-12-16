@@ -5,10 +5,11 @@
   },
   "globals" : {
     "React": true,
+    "Component": true,
     "PropTypes": true
   },
   "rules": {
-    "max-len": [2, 120, 2],
+    "max-len": "off",
     "one-var": "off",
     "no-mixed-operators": "off",
     "no-underscore-dangle": ["error", { "allowAfterThis": true }],

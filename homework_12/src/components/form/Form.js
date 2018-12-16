@@ -12,31 +12,23 @@ class UserForm extends Component {
     ];
     this.state = {};
 
-    this.fields.forEach(({ label }) => this.state[ label ] = '');
+    this.fields.forEach(({ label }) => this.state[label] = '');
   }
 
 
-  onChange = ({target}) =>{
+  onChange = ({ target }) => {
     if (/checkbox|radio/i.test(target.type)) {
-      this.setState({[target.name]: target.checked })
-    } else{
-      this.setState({[target.name]: target.value})
+      this.setState({ [target.name]: target.checked });
+    } else {
+      this.setState({ [target.name]: target.value });
     }
   }
 
   render() {
-    const { state } = this
-    return (  
+    const { state } = this;
+    return (
       <form className="form">
-        {
-          this.fields.map(field => 
-            <div className="wrapper">
-              <input  type={field.secure ? 'password' : 'text'} 
-                      name={field.label} 
-                      placeholder={field.placeholder}
-                      value={state[field.label]}/>
-            </div>)
-        }
+        { this.fields.map(field => <div className="wrapper"> <input type={field.secure ? 'password' : 'text'} name={field.label} placeholder={field.placeholder} value={state[field.label]} /></div>) }
       </form>
     );
   }
