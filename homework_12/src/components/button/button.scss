@@ -1,0 +1,15 @@
+@import "src/scss/variables.scss";
+@import "src/scss/mixins.scss";
+
+button{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 20px;
+    background: $color2;
+    border: none;
+    width: 120px;
+    margin-bottom: 30px;
+    margin-right: 20px;
+    &.active{
+        background: $color4;
+    }
+}

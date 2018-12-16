@@ -1,0 +1,30 @@
+@import "src/scss/variables.scss";
+@import "src/scss/mixins.scss";
+
+.user{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    .post{
+        flex-grow: 2;
+        width: 990px;
+        p{
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            strong{
+                display: block;
+                color: $color4;
+            }
+        }
+    }
+    ul{
+        flex-grow: 1;
+        width: 180px;
+        list-style: none;
+        padding: 0;
+        li{
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: $color5;
+            cursor: pointer;
+        }
+    }
+}
