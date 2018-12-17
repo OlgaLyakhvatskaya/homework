@@ -6,9 +6,15 @@
     flex: auto;
     .container{
         @include cont-wrapp();
-        .content{
-            margin-left: 20px;
-            @include text();
+        span{
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-size: 18px;
+            color: $color5;
+        }
+        input{
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-size: 18px;
+            color: $color1;
         }
     }
 }
