@@ -1,5 +1,6 @@
 import './main.scss';
-import Form from '../form';
+// import Form from '../form';
+import FormInput from '../formInput';
 
 class Main extends Component {
   constructor(props) {
@@ -12,7 +13,8 @@ class Main extends Component {
     return (
       <main className="main">
         <div className="container">
-          <Form />
+          <FormInput />
+          {/* <Form /> */}
         </div>
       </main>
     );
