@@ -3,7 +3,7 @@ import './button.scss';
 class Button extends Component {
   state = { hasClass: false }
 
-  onClickHendle = () => {
+  onClickHandle = () => {
     this.setState(prev => ({ hasClass: !prev.hasClass }));
   }
 
@@ -11,7 +11,7 @@ class Button extends Component {
     const { hasClass } = this.state;
 
     return (
-      <button type="button" onClick={this.onClickHendle} className={hasClass ? 'active' : ''}>Click me!</button>
+      <button type="button" onClick={this.onClickHandle} className={hasClass ? 'active' : ''}>Click me!</button>
     );
   }
 }

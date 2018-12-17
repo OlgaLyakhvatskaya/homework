@@ -22,9 +22,8 @@ class Main extends Component {
   }
 
   getPost = (user) => {
-    fetch('https://jsonplaceholder.typicode.com/posts')
+    fetch(`https://jsonplaceholder.typicode.com/posts?userId=${user.id}`)
       .then(response => response.json())
-      .then(result => result.filter(el => user.id === el.userId))
       .then(posts => this.setState({ posts }));
   }
 
