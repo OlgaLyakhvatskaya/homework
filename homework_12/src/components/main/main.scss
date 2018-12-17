@@ -6,16 +6,9 @@
     flex: auto;
     .container{
         @include cont-wrapp();
-        display: flex;
-        flex-direction: row;
-        justify-content: flex-start;
         .content{
             margin-left: 20px;
             @include text();
-            p{
-                margin-top:0;
-            }
-
         }
     }
 }
