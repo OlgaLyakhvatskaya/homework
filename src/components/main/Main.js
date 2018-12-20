@@ -15,7 +15,7 @@ class Main extends Component {
     return (
       <main className="main">
         <div className="container">
-          <FormInput props={fn}/>
+          <FormInput props={fn} />
           {/* <Form /> */}
         </div>
       </main>
