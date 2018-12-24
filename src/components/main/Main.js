@@ -10,10 +10,12 @@ class Main extends Component {
   }
 
   render() {
+    const fn = text => console.log(text);
+
     return (
       <main className="main">
         <div className="container">
-          <FormInput />
+          <FormInput props={fn} />
           {/* <Form /> */}
         </div>
       </main>
