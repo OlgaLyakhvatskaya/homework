@@ -1,7 +1,7 @@
 import './form.scss';
 
 class UserForm extends Component {
-  static getDerivedStateFromProps({ data }, currentState){
+  static getDerivedStateFromProps({ data }, currentState) {
     if (!data) return null;
 
     const props = Object.entries(data);
@@ -10,12 +10,9 @@ class UserForm extends Component {
     if (isStateEmpty) {
       const state = {};
 
-      props.forEach(([key, value]) => state[key] = { value, error: '' })
+      props.forEach(([key, value]) => state[key] = { value, error: '' });
 
       return state;
-        // email: { value: data.email, error: '' },
-        // name:  { value: data.name, error: '' },
-        // user:  { value: data.user, error: '' }
     }
     return null;
   }
@@ -23,11 +20,11 @@ class UserForm extends Component {
   constructor(props) {
     super(props);
     this.fields = [
-      { label: 'email', reg: /^\w+@\w+\.[a-z]{2,}$/, placeholder: "E-mail" },
-      { label: 'name', reg: /^[^ ]{3,20}$/, placeholder: "Name" },
-      { label: 'surname', reg: /^[^ ]{3,20}$/, placeholder: "Login"  },
-      { label: 'password', reg: /^[^ ]{6,20}$/, secure: true, placeholder: "Password"  },
-      { label: 'repeatPassword', reg: /^[^ ]{6,20}$/, secure: true, placeholder: "Repeat password"  }
+      { label: 'email', reg: /^\w+@\w+\.[a-z]{2,}$/, placeholder: 'E-mail' },
+      { label: 'name', reg: /^[^ ]{3,20}$/, placeholder: 'Name' },
+      { label: 'surname', reg: /^[^ ]{3,20}$/, placeholder: 'Login' },
+      { label: 'password', reg: /^[^ ]{6,20}$/, secure: true, placeholder: 'Password' },
+      { label: 'repeatPassword', reg: /^[^ ]{6,20}$/, secure: true, placeholder: 'Repeat password' }
     ];
     this.state = {};
 
@@ -38,12 +35,12 @@ class UserForm extends Component {
   }
 
   onChange = ({ target }) => {
-    const field = this.state[target.name]
+    const field = this.state[target.name];
 
     if (/checkbox|radio/i.test(target.type)) {
-      this.setState({ [target.name]: {...field, value: target.checked} })
-    } else{
-      this.setState({ [target.name]: {...field, value: target.value} })
+      this.setState({ [target.name]: { ...field, value: target.checked } });
+    } else {
+      this.setState({ [target.name]: { ...field, value: target.value } });
     }
   }
 
@@ -53,14 +50,15 @@ class UserForm extends Component {
     let error = '';
 
     if (target.value.lenght === 0 || !field.reg.test(target.value)) {
-      error = 'Is not valid';     
+      error = 'Is not valid';
     } else {
       error = '';
     }
 
-    if (target.name === 'repeatPassword' && this.state.password.value !== target.value) {
-      error = 'Passwords are not equled'
-      
+    if (target.name === 'repeatPassword'
+        && this.state.password.value
+        !== target.value) {
+      error = 'Passwords are not equled';
     }
     this.setState({ [target.name]: { ...stateField, error } });
   }
@@ -69,7 +67,7 @@ class UserForm extends Component {
     event.preventDefault();
     const data = {};
 
-    Object.entries(this.state).forEach(([key, { value }]) => data[key] = value)
+    Object.entries(this.state).forEach(([key, { value }]) => data[key] = value);
     if (this.props.onSave) {
       this.props.onSave(data);
     }
@@ -77,32 +75,36 @@ class UserForm extends Component {
   }
 
   getButtonState = () => {
-    return Object.entries(this.state).some(([key, { error, value }]) => error || !value)
+    Object.entries(this.state).some(([key, { error, value }]) => error || !value);
   }
 
   render() {
-    const { state } = this
-    return (  
+    const { state } = this;
+    const { disabled = {} } = this.props;
+
+    return (
       <form className="form" onSubmit={this.onSubmit}>
         {
-          this.fields.map(field => 
+          this.fields.map(field => (
             <div className="wrapper">
-              <input  
-                type={field.secure ? 'password' : 'text'} 
-                name={field.label} 
+              <input
+                type={field.secure ? 'password' : 'text'}
+                name={field.label}
                 value={state[field.label].value}
                 placeholder={field.placeholder}
                 onChange={this.onChange}
                 onBlur={this.validate}
+                disabled={disabled[field.label]}
               />
-              {state[field.label].error && 
-              <mark>{state[field.label].error}</mark>}
-            </div>)
+              {state[field.label].error
+                && <mark>{state[field.label].error}</mark>}
+            </div>
+          ))
         }
-        <input 
-          type="submit" 
+        <input
+          type="submit"
           disabled={this.getButtonState()}
-          value="Send" 
+          value="Send"
         />
       </form>
     );

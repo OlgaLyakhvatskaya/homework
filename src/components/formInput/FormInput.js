@@ -7,6 +7,7 @@ class FormInput extends Component {
 
   onShowInput = () => {
     this.setState(prev => ({ print: !prev.print }));
+    this.props.func(e.target.value);
   }
 
   getValue = (event) => {
