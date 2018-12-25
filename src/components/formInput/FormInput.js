@@ -5,7 +5,7 @@ class FormInput extends Component {
     value: 'Hello world!'
   }
 
-  onShowInput = () => {
+  onShowInput = (e) => {
     this.setState(prev => ({ print: !prev.print }));
     this.props.func(e.target.value);
   }
@@ -21,7 +21,6 @@ class FormInput extends Component {
       <>
         {
           print
-            // eslint-disable-next-line jsx-a11y/no-autofocus
             ? <input type="text" value={value} onChange={this.getValue} onBlur={this.onShowInput} autoFocus />
             : <span onClick={this.onShowInput}>{value}</span>
         }

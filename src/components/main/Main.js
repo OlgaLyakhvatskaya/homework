@@ -19,6 +19,7 @@ class Main extends Component {
   }
 
   render() {
+<<<<<<< HEAD
     const { user } = this.state;
     return (
       <main className="main">
@@ -30,6 +31,15 @@ class Main extends Component {
               : <Login onLogin={this.onLogin} />
           }
 >>>>>>> Stashed changes
+=======
+    const fn = text => console.log(text);
+
+    return (
+      <main className="main">
+        <div className="container">
+          <FormInput props={fn} />
+          {/* <Form /> */}
+>>>>>>> 4873bef25164574d17fdf6b0010994e6a5e53c09
         </div>
       </main>
     );
