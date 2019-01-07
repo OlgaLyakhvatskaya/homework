@@ -1,13 +1,13 @@
+import './formInput.scss';
 
 class FormInput extends Component {
   state = {
     print: false,
-    value: 'Hello world!'
+    value: ''
   }
 
-  onShowInput = (e) => {
+  onShowForm = () => {
     this.setState(prev => ({ print: !prev.print }));
-    this.props.func(e.target.value);
   }
 
   getValue = (event) => {
@@ -16,13 +16,18 @@ class FormInput extends Component {
 
   render() {
     const { value, print } = this.state;
+    const { rows } = this.props;
+    let rowsType;
+
+    rows
+      ? rowsType = <textarea type="text" value={value} onChange={this.getValue} onBlur={this.onShowForm} autoFocus>{value}</textarea>
+      : rowsType = <input type="text" value={value} onChange={this.getValue} onBlur={this.onShowForm} autoFocus />;
 
     return (
-      <>
-        {
+      <>{
           print
-            ? <input type="text" value={value} onChange={this.getValue} onBlur={this.onShowInput} autoFocus />
-            : <span onClick={this.onShowInput}>{value}</span>
+            ? rowsType
+            : <span onClick={this.onShowForm} className={value ? 'hasValue' : 'noValue'}>{value}</span>
         }
       </>
     );

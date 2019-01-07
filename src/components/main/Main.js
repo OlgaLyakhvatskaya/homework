@@ -1,34 +1,31 @@
-import './main.scss';
 import Login from '../../pages/login';
-import { checkUser } from '../../services';
+import Home from '../../pages/home';
+import Product from '../product';
+
+import './main.scss';
 
 class Main extends Component {
-  state = {
-    user: null,
-    loading: true,
-  }
-
-  componentDidMount() {
-    checkUser()
-      .then(user => this.setState({ loading: false, user }))
-      .catch(() => this.setState({ loading: false }));
-  }
-
-  onLogin = (user) => {
-    this.setState({ user });
+  renderContent() {
+    const { user, onLogin, info } = this.props;
+    return (
+      <>
+        <h2>{user ? `Hello, ${user.firstName}` : 'Login'}</h2>
+        {
+          user
+            ? <><Home user={user} info={info} /><Product /></>
+            : <Login onLogin={onLogin} />
+        }
+      </>
+    );
   }
 
   render() {
-    const { user } = this.state;
+    const { loading } = this.props;
+
     return (
       <main className="main">
         <div className="container">
-          <h2>{user ? `Hello, ${user.lastName}` : 'Login'}</h2>
-          {
-            user 
-              ? <p>text</p>
-              : <Login onLogin={this.onLogin} />
-          }
+          { loading ? 'Loading...' : this.renderContent() }
         </div>
       </main>
     );

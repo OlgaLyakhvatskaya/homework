@@ -1,16 +1,11 @@
 import ReactDom from 'react-dom';
+import AppComponent from './appComponent';
+
 import './app.scss';
-
-import Header from './components/header';
-import Footer from './components/footer';
-import Main from './components/main';
-
 
 const Wrapper = (
   <>
-    <Header />
-    <Main title="hi"/>
-    <Footer />
+    <AppComponent />
   </>
 );
 ReactDom.render(Wrapper, document.getElementById('app'));

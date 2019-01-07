@@ -1,11 +1,27 @@
 import Navigation from '../navigation';
 import './header.scss';
 
-const Header = () => (
+const Header = ({ user, info }) => (
   <header className="header">
     <div className="container">
       <strong><a href="/">Logo</a></strong>
-      <Navigation list={['Home', 'Products', 'Contacts']} />
+      <div className="userLogin">
+        {
+          user
+            ? (
+              <>
+                <span>
+                  {user.firstName}
+                  {info && `(${info.categories}/${info.products})`}
+                </span>
+                <Navigation list={['Home', 'Products', 'Contacts']} />
+              </>
+            )
+            : (
+              <Navigation list={['SignIn', 'SignUp']} />
+            )
+        }
+      </div>
     </div>
   </header>
 );

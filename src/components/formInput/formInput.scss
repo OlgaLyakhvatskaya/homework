@@ -1,0 +1,81 @@
+@import "src/scss/variables.scss";
+@import "src/scss/mixins.scss";
+
+.single-product{
+    width: 500px;
+    margin:  20px auto;
+    padding: 20px;
+    background: lighten($color2, 20%);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    span{
+        display: inline-block; 
+        background: $color3;
+        border-radius: 3px;
+        border: 1px solid transparent;
+        font-size: 16px;
+        line-height: 19px;
+        padding: 5px;
+        vertical-align: middle;
+        color: $color1 !important;
+        font-weight: normal;
+    }
+    .noValue{
+        height: 19px;
+    }
+    .hasValue{
+        height: auto;
+    }
+    input,
+    textarea{
+        display: inline-block; 
+        background: $color3;
+        border-radius: 3px;
+        border: 1px solid transparent;
+        font-size: 16px;
+        line-height: 19px;
+        border: 1px solid $color4;
+        padding: 5px;
+        color: $color1;
+        box-sizing: border-box;
+        height: auto;
+        &:focus{
+            outline: none;
+        }
+    }
+    textarea{
+        min-height: 100px;
+    }
+    .title{
+        span,
+        input{
+            width: 88%;  
+        }
+    }
+    .price{
+        span,
+        input{
+            width: 20%;  
+        }
+    }
+    .description{
+        span{
+            width: 97%;
+        }
+        input,
+        textarea{
+            width: 100%;  
+        }
+    }
+    input{
+        &[type="submit"]{
+            width: 100%;
+            background: $color5;
+            color: white;
+            border: 1px solid transparent;
+            @include transition(background .3s ease-in-out);
+            &:hover{
+                background: $color1;
+            }
+        }
+    }
+}

@@ -1,0 +1,22 @@
+@import "src/scss/variables.scss";
+@import "src/scss/mixins.scss";
+
+.wrap{
+    width: 500px;
+    margin: auto;
+    padding: 20px;
+    background: lighten($color2, 20%);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    ul{
+        list-style: none;
+        padding: 0;
+    }
+    .link{
+        color: darken($color5, 20%);
+        font-weight: bold;
+        @include transition(color .3s ease-in-out);
+        &:hover{
+            color: $color1;
+        }
+    }
+}
