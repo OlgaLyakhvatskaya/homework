@@ -1,6 +1,6 @@
 import Header from './components/header';
 import Main from './components/main';
-import { checkUser, getInfo } from './services';
+import { checkUser, getInfo, getListCat } from './services';
 
 import './app.scss';
 
@@ -8,6 +8,7 @@ class AppComp extends Component {
   state = {
     user: null,
     info: null,
+    list: [],
     loading: true
   }
 
@@ -15,6 +16,9 @@ class AppComp extends Component {
     checkUser()
       .then(user => this.setState({ loading: false, user }))
       .catch(() => this.setState({ loading: false }));
+
+    getListCat()
+      .then(list => this.setState({ list }));
   }
 
   componentDidUpdate(prevProps, prevState) {
@@ -29,7 +33,7 @@ class AppComp extends Component {
   }
 
   render() {
-    const { user, info, loading } = this.state;
+    const { user, info, loading, list } = this.state;
 
     return (
       <>
@@ -37,6 +41,7 @@ class AppComp extends Component {
         <Main
           user={user}
           info={info}
+          list={list}
           onLogin={this.onLogin}
           loading={loading}
         />

@@ -1,0 +1,20 @@
+@import "src/scss/variables.scss";
+@import "src/scss/mixins.scss";
+
+.buttons{
+    position: absolute;
+    top:0;
+    right: 0;
+    a{
+        text-decoration: none;
+        display: inline-block;
+        width: 20px;
+        height: 20px;
+        padding: 5px;
+        background: white;
+        z-index: 10;
+        img{
+            max-width: 100%;
+        }
+    }
+}

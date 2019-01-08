@@ -16,18 +16,18 @@ class FormInput extends Component {
 
   render() {
     const { value, print } = this.state;
-    const { rows } = this.props;
+    const { rows, item } = this.props;
     let rowsType;
 
     rows
       ? rowsType = <textarea type="text" value={value} onChange={this.getValue} onBlur={this.onShowForm} autoFocus>{value}</textarea>
-      : rowsType = <input type="text" value={value} onChange={this.getValue} onBlur={this.onShowForm} autoFocus />;
+      : rowsType = <input type="text" value={value || item} onChange={this.getValue} onBlur={this.onShowForm} autoFocus />;
 
     return (
       <>{
           print
             ? rowsType
-            : <span onClick={this.onShowForm} className={value ? 'hasValue' : 'noValue'}>{value}</span>
+            : <span onClick={this.onShowForm} className={value ? 'hasValue' : 'noValue'}>{value || item}</span>
         }
       </>
     );
