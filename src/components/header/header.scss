@@ -15,9 +15,19 @@
         strong{
             a{
                 @include text();
+                width: 55px;
                 color: $color2;
+                display: block;
                 text-decoration: none;
+                img{
+                    max-width: 100%;
+                }
             }
+        }
+        span{
+            color: white;
+            font-size: 18px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
     }
 }

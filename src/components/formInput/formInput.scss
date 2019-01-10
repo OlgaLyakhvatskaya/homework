@@ -72,7 +72,7 @@
             background: $color2;
             color: white;
             border: 1px solid transparent;
-            @include transition(background .3s ease-in-out);
+            @include transition(background, .3s, ease-in-out);
             &:hover{
                 background: $color5;
             }

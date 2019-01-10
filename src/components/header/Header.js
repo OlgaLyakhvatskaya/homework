@@ -4,24 +4,22 @@ import './header.scss';
 const Header = ({ user, info }) => (
   <header className="header">
     <div className="container">
-      <strong><a href="/">Logo</a></strong>
-      <div className="userLogin">
-        {
-          user
-            ? (
-              <>
-                <span>
-                  {user.firstName}
-                  {info && `(${info.categories}/${info.products})`}
-                </span>
-                <Navigation list={['Home', 'Products', 'Contacts']} />
-              </>
-            )
-            : (
-              <Navigation list={['SignIn', 'SignUp']} />
-            )
-        }
-      </div>
+      <strong><a href="/"><img src="./images/logo.png" alt="logo" /></a></strong>
+      {
+        user
+          ? (
+            <>
+              <Navigation list={['Home', 'Products', 'Contacts']} />
+              <span>
+                {user.firstName}
+                {info && `(${info.categories}/${info.products})`}
+              </span>
+            </>
+          )
+          : (
+            <Navigation list={['SignIn', 'SignUp']} />
+          )
+      }
     </div>
   </header>
 );

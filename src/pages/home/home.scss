@@ -4,8 +4,9 @@
 .wrap{
     width: 500px;
     margin: auto;
+    color: $color2;
     padding: 20px;
-    background: lighten($color2, 20%);
+    background: lighten($color1, 30%);
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     ul{
         list-style: none;
