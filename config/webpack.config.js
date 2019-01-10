@@ -37,8 +37,9 @@ module.exports = {
     entry: './app.js' ,
     context: path.resolve(__dirname, '../src'),
     output: {
-        filename: 'bundle-main.js',
-        path: path.resolve(__dirname, '../public')
+      filename: 'bundle-main.js',
+      path: path.resolve(__dirname, '../public'),
+      publicPath: '/',
     },
     mode: 'development',
 
@@ -90,6 +91,7 @@ module.exports = {
       contentBase: path.resolve(__dirname, '../dist'),
       publicPath: '/',
       port: 9000,
-      hot: true
+      hot: true,
+      historyApiFallback: true,
     }    
 }
