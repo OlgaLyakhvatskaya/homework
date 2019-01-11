@@ -1,4 +1,5 @@
 import Navigation from '../navigation';
+
 import './header.scss';
 
 const Header = ({ user, info }) => (
@@ -9,7 +10,7 @@ const Header = ({ user, info }) => (
         user
           ? (
             <>
-              <Navigation list={['Home', 'Products', 'Contacts']} />
+              <Navigation list={['Products', 'Products', 'Profile']} />
               <span>
                 {user.firstName}
                 {info && `(${info.categories}/${info.products})`}

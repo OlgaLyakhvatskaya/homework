@@ -8,14 +8,15 @@ class Main extends Component {
     const { user, onLogin, info } = this.props;
     return (
       <>
-        <h2>{user ? `Hello, ${user.firstName}` : 'Login'}</h2>
+        {/* <h2>{user ? `Hello, ${user.firstName}` : 'Login'}</h2>
         {
           user
             ? <>
               <Home user={user} info={info} />
             </>
             : <Login onLogin={onLogin} />
-        }
+        } */}
+        { this.props.children }
       </>
     );
   }

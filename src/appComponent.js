@@ -1,5 +1,6 @@
 import Header from './components/header';
 import Main from './components/main';
+import { Pages } from './pages/Pages';
 import { checkUser, getInfo, getListCat } from './services';
 
 import './app.scss';
@@ -44,7 +45,9 @@ class AppComp extends Component {
           list={list}
           onLogin={this.onLogin}
           loading={loading}
-        />
+        >
+          <Pages />
+        </Main>
       </>
     );
   }

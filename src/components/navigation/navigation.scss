@@ -11,5 +11,8 @@
         &:hover{
             color: $color4; 
         }
+        &.active{
+            color: lighten($color4, 20%);
+        }
     }
 }
