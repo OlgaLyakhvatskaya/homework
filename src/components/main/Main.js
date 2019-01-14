@@ -18,7 +18,7 @@ class Main extends Component {
               <Product /> <ProductList list={list} />
             </>
             : <Login onLogin={onLogin} />
-        }
+        } */}
         { this.props.children }
       </>
     );

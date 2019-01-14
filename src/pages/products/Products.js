@@ -16,6 +16,7 @@ class Products extends Component {
         listProd: nextProps.list
       };
     }
+    return null;
   }
 
   onChangeInput = (event) => {
