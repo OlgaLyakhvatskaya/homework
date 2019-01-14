@@ -15,21 +15,24 @@ const Login = ({ onLogin }) => {
   };
 
   return (
-    <form className="login" onSubmit={onSubmit}>
-      <input
-        type="text"
-        placeholder="Enter email"
-        name="email"
-        defaultValue="admin@a.com"
-      />
-      <input
-        type="password"
-        placeholder="Password"
-        name="password"
-        defaultValue="admin"
-      />
-      <input type="submit" value="Login" />
-    </form>
+    <>
+      <h3>Login</h3>
+      <form className="login" onSubmit={onSubmit}>
+        <input
+          type="text"
+          placeholder="Enter email"
+          name="email"
+          defaultValue="admin@a.com"
+        />
+        <input
+          type="password"
+          placeholder="Password"
+          name="password"
+          defaultValue="admin"
+        />
+        <input type="submit" value="Login" />
+      </form>
+    </>
   );
 };
 

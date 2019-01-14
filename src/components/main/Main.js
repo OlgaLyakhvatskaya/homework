@@ -10,7 +10,7 @@ class Main extends Component {
     const { user, onLogin, info, list } = this.props;
     return (
       <>
-        <h2>{user ? `Hello, ${user.firstName}` : 'Login'}</h2>
+        {/* <h2>{user ? `Hello, ${user.firstName}` : 'Login'}</h2>
         {
           user
             ? <>
@@ -19,7 +19,7 @@ class Main extends Component {
             </>
             : <Login onLogin={onLogin} />
         }
-        {/* { this.props.children } */}
+        { this.props.children }
       </>
     );
   }
