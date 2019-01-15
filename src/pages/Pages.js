@@ -1,4 +1,4 @@
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch, Redirect } from 'react-router-dom';
 import Login from './login';
 import CreateUser from './createUser';
 import Products from './products';
@@ -9,45 +9,64 @@ import StartPage from './startPage';
 import Category from './category';
 import Categories from './categories';
 
-export const Pages = () => (
+export const Pages = ({ user, onLogin, info, list }) => (
   <Switch>
-    <Route
-      path="/"
-      exact
-      component={Home}
-    />
-    <Route
-      path="/signin"
-      component={Login}
-    />
-    <Route
-      path="/category"
-      component={Category}
-    />
-    <Route
-      path="/categories"
-      component={Categories}
-    />
-    <Route
-      path="/startpage"
-      component={StartPage}
-    />
-    <Route
-      path="/signup"
-      component={CreateUser}
-    />
-    <Route
-      path="/products"
-      component={Products}
-    />
-    <Route
-      path="/profile"
-      component={UpdateUser}
-    />
-    <Route
-      path="/success"
-      component={SuccessPage}
-    />
+    {
+      user
+        ? [
+          <Route
+            path="/(home)?"
+            exact
+            render={() => <Home info={info} user={user} />}
+            key="home"
+          />,
+          <Route
+            path="/category"
+            component={Category}
+            key="category"
+          />,
+          <Route
+            path="/categories"
+            component={Categories}
+            key="categories"
+          />,
+          <Route
+            path="/products"
+            render={() => <Products list={list} />}
+            key="products"
+          />,
+          <Route
+            path="/profile"
+            render={({ history }) => <UpdateUser data={user} history={history} />}
+            key="profile"
+          />,
+          <Redirect from="/signin" to="/" />
+        ]
+        : [
+          <Route
+            path="/(home)?"
+            exact
+            component={StartPage}
+            key="startpage"
+          />,
+          <Route
+            path="/signin"
+            render={() => <Login onLogin={onLogin} />}
+            key="signin"
+          />,
+          <Route
+            path="/signup"
+            render={({ history }) => <CreateUser history={history} />}
+            key="signup"
+
+          />,
+          <Route
+            path="/success"
+            component={SuccessPage}
+            key="success"
+          />
+        ]
+    }
     <Route
       render={() => <h3>Not Found</h3>}
     />

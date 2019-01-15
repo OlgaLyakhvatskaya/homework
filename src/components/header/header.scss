@@ -24,10 +24,39 @@
                 }
             }
         }
-        span{
+        .user-prof{
             color: white;
             font-size: 18px;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            position: relative;
+            .user-menu{
+                position: absolute;
+                top: 100%;
+                right: 0;
+                width: 100%;
+                background: $color3;
+                padding: 5px;
+                border-radius: 3px;
+                li{
+                    a,
+                    button{
+                        background: none;
+                        border: none;
+                        padding: 0;
+                        display: block;
+                        font-size: 18px;
+                        cursor: pointer;
+                        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+                        color: $color1;
+                        text-decoration: none;
+                        margin-bottom: 10px;
+                        @include transition(color, .3s, ease-in-out);
+                        &:hover{
+                            color: lighten($color1, 20%);
+                        }
+                    }
+                }
+            }
         }
     }
 }

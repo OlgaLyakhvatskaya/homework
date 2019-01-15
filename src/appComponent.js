@@ -33,20 +33,24 @@ class AppComp extends Component {
     this.setState({ user });
   }
 
+  onLogout = () => {
+    this.setState({ user: null });
+  }
+
   render() {
-    const { user, info, loading, list } = this.state;
+    const { user, info, loading, list, history } = this.state;
 
     return (
       <>
-        <Header user={user} info={info} />
-        <Main
-          user={user}
-          info={info}
-          list={list}
-          onLogin={this.onLogin}
-          loading={loading}
-        >
-          <Pages />
+        <Header user={user} info={info} onLogout={this.onLogout} history={history} />
+        <Main>
+          <Pages
+            user={user}
+            info={info}
+            list={list}
+            onLogin={this.onLogin}
+            loading={loading}
+          />
         </Main>
       </>
     );
