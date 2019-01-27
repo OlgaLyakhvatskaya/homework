@@ -10,10 +10,10 @@ class Products extends Component {
   }
 
   static getDerivedStateFromProps(nextProps, prevState) {
-    if (nextProps.list !== prevState.originListProd) {
+    if (nextProps.listProd !== prevState.originListProd) {
       return {
-        originListProd: nextProps.list,
-        listProd: nextProps.list
+        originListProd: nextProps.listProd,
+        listProd: nextProps.listProd
       };
     }
     return null;
@@ -44,8 +44,8 @@ class Products extends Component {
         <div className="product-list">
           {
             listProd.map(elem => (
-              <div className="product">
-                <a href="/" className="head-prod">
+              <div className="product" key={elem.id}>
+                <a href={`products/${elem.id}`} className="head-prod">
                   <img src={elem.image ? elem.image : './images/no-photo.jpg'} alt={elem.title} />
                   <ButtonsActions />
                 </a>

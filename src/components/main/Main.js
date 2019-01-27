@@ -28,11 +28,17 @@ class Main extends Component {
     const { loading } = this.props;
 
     return (
+<<<<<<< Updated upstream
       <main className="main">
         <div className="container">
           { loading ? 'Loading...' : this.renderContent() }
         </div>
       </main>
+=======
+      <>
+        { this.props.children }
+      </>
+>>>>>>> Stashed changes
     );
   }
 }

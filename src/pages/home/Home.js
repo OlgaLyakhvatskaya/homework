@@ -1,20 +1,13 @@
+<<<<<<< Updated upstream
 import { getInfo } from '../../services';
 import { Redirect } from 'react-router-dom';
+=======
+>>>>>>> Stashed changes
 import './home.scss';
 
 class FirstWindow extends Component {
-  state = {
-    info: null
-  }
-
-  componentDidMount() {
-    getInfo()
-      .then(info => this.setState({ info }));
-  }
-
   render() {
-    const { user = {} } = this.props;
-    const { info } = this.state;
+    const { user = {}, info } = this.props;
 
     return (
       <>

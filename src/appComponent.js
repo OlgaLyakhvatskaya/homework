@@ -1,43 +1,55 @@
+import { withRouter } from 'react-router-dom';
+import { connect } from 'react-redux';
+
+import { checkUser, logout } from './store/user';
+import { getInfo, cleanInfo } from './store/categories';
 import Header from './components/header';
 import Main from './components/main';
 import { Pages } from './pages/Pages';
-import { checkUser, getInfo, getListCat } from './services';
 
 import './app.scss';
+import { getListProd, getProduct } from './services';
 
 class AppComp extends Component {
   state = {
-    user: null,
-    info: null,
-    list: [],
-    loading: true
+    listProd: [],
+    loading: true,
+    product: null
   }
 
   componentDidMount() {
-    checkUser()
-      .then(user => this.setState({ loading: false, user }))
-      .catch(() => this.setState({ loading: false }));
-
-    getListCat()
-      .then(list => this.setState({ list }));
+    this.props.dispatch(checkUser());
+    getListProd()
+      .then(listProd => this.setState({ listProd }));
   }
 
-  componentDidUpdate(prevProps, prevState) {
-    if (!prevState.user && this.state.user) {
-      getInfo()
-        .then(info => this.setState({ info }));
+  componentDidUpdate(prevProps) {
+    if (!prevProps.user && this.props.user) {
+      this.props.dispatch(getInfo());
+    }
+
+    if (prevProps.user && !this.props.user) {
+      this.props.history.push('/');
     }
   }
 
-  onLogin = (user) => {
-    this.setState({ user });
-  }
-
+<<<<<<< Updated upstream
   render() {
     const { user, info, loading, list } = this.state;
+=======
+  onLogout = () => {
+    this.props.dispatch(logout());
+    this.props.dispatch(cleanInfo());
+  }
 
+>>>>>>> Stashed changes
+
+  render() {
+    const { loading, listProd } = this.state;
+    const { user, info, history } = this.props;
     return (
       <>
+<<<<<<< Updated upstream
         <Header user={user} info={info} />
         <Main
           user={user}
@@ -47,10 +59,31 @@ class AppComp extends Component {
           loading={loading}
         >
           <Pages />
+=======
+        <Header
+          user={user}
+          onLogout={this.onLogout}
+          history={history}
+          info={info}
+        />
+        <Main>
+          <Pages
+            user={user}
+            listProd={listProd}
+            onLogin={this.onLogin}
+            loading={loading}
+            info={info}
+          />
+>>>>>>> Stashed changes
         </Main>
       </>
     );
   }
 }
 
-export default AppComp;
+const mapState = state => ({
+  user: state.user,
+  info: state.info
+});
+
+export default withRouter(connect(mapState)(AppComp));
