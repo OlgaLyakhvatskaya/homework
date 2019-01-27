@@ -6,14 +6,13 @@ function* checkSaga() {
   let user;
   try {
     user = yield checkUser();
-    yield put(setUser(user));
-  } catch (error){
-    console.log(error)
+  } catch (error) {
+      yield put(setUser(user));
   }
 }
 
 function* loginSaga(action) {
-  const  user = yield login(action.data);
+  const user = yield login(action.data);
   yield put(setUser(user));
 }
 

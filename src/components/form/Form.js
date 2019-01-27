@@ -21,8 +21,8 @@ class UserForm extends Component {
     super(props);
     this.fields = [
       { label: 'email', reg: /^\w+@\w+\.[a-z]{2,}$/, placeholder: 'E-mail' },
-      { label: 'name', reg: /^[^ ]{3,20}$/, placeholder: 'Name' },
-      { label: 'surname', reg: /^[^ ]{3,20}$/, placeholder: 'Login' },
+      { label: 'name', reg: /^[^ ]{3,20}$/, placeholder: 'First Name' },
+      { label: 'surname', reg: /^[^ ]{3,20}$/, placeholder: 'Last Name' },
       { label: 'password', reg: /^[^ ]{6,20}$/, secure: true, placeholder: 'Password' },
       { label: 'repeatPassword', reg: /^[^ ]{6,20}$/, secure: true, placeholder: 'Repeat password' }
     ];

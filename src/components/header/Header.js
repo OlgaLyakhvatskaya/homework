@@ -1,31 +1,8 @@
+import { NavLink } from 'react-router-dom';
 import Navigation from '../navigation';
 
 import './header.scss';
 
-<<<<<<< Updated upstream
-const Header = ({ user, info }) => (
-  <header className="header">
-    <div className="container">
-      <strong><a href="/"><img src="./images/logo.png" alt="logo" /></a></strong>
-      {
-        user
-          ? (
-            <>
-              <Navigation list={['Products', 'Products', 'Profile']} />
-              <span>
-                {user.firstName}
-                {info && `(${info.categories}/${info.products})`}
-              </span>
-            </>
-          )
-          : (
-            <Navigation list={['SignIn', 'SignUp']} />
-          )
-      }
-    </div>
-  </header>
-);
-=======
 const Header = ({ user, info, onLogout }) => {
   const onLogoutHandler = () => {
     onLogout();
@@ -58,6 +35,5 @@ const Header = ({ user, info, onLogout }) => {
     </header>
   );
 };
->>>>>>> Stashed changes
 
 export default Header;

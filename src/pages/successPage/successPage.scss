@@ -1,0 +1,17 @@
+@import "src/scss/variables.scss";
+@import "src/scss/mixins.scss";
+
+.successPage{
+    text-align: center;
+    .link{
+        text-align: center;
+        display: inline-block;
+        color: darken($color5, 20%);
+        font-weight: bold;
+        font-size: 24px;
+        @include transition(color .3s ease-in-out);
+        &:hover{
+            color: $color1;
+        }
+    }
+}

@@ -3,12 +3,16 @@ import { connect } from 'react-redux';
 
 import { checkUser, logout } from './store/user';
 import { getInfo, cleanInfo } from './store/categories';
+import { ToastContainer } from 'react-toastr';
+
 import Header from './components/header';
 import Main from './components/main';
 import { Pages } from './pages/Pages';
 
 import './app.scss';
-import { getListProd, getProduct } from './services';
+import { getListProd } from './services';
+import { cleanError } from './store/status';
+
 
 class AppComp extends Component {
   state = {
@@ -31,51 +35,46 @@ class AppComp extends Component {
     if (prevProps.user && !this.props.user) {
       this.props.history.push('/');
     }
-  }
 
-<<<<<<< Updated upstream
-  render() {
-    const { user, info, loading, list } = this.state;
-=======
+    if (!prevProps.error && this.props.error) {
+      this.container.error(
+        this.props.error,
+        "error"
+      );
+      this.props.dispatch(cleanError());
+
+
+    }
+
+
   onLogout = () => {
     this.props.dispatch(logout());
     this.props.dispatch(cleanInfo());
   }
-
->>>>>>> Stashed changes
-
   render() {
     const { loading, listProd } = this.state;
     const { user, info, history } = this.props;
     return (
       <>
-<<<<<<< Updated upstream
-        <Header user={user} info={info} />
-        <Main
-          user={user}
-          info={info}
-          list={list}
-          onLogin={this.onLogin}
-          loading={loading}
-        >
-          <Pages />
-=======
         <Header
           user={user}
-          onLogout={this.onLogout}
-          history={history}
           info={info}
+          onLogout={this.onLogout}
         />
         <Main>
           <Pages
             user={user}
+
+            info={info}
             listProd={listProd}
             onLogin={this.onLogin}
             loading={loading}
-            info={info}
           />
->>>>>>> Stashed changes
         </Main>
+        <ToastContainer
+          ref={ref => this.container = ref}
+          className="toast-top-right"
+        />
       </>
     );
   }
@@ -83,6 +82,7 @@ class AppComp extends Component {
 
 const mapState = state => ({
   user: state.user,
+  error: state.error,
   info: state.info
 });
 

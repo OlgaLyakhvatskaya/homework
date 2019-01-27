@@ -16,17 +16,26 @@
     justify-content: space-between;
     align-items: center;
     input{
-        margin-bottom: 20px;
+        display: block;
+        width: 300px;
+        border: 1px solid lighten($color4, 20%);
+        border-radius: 3px;
+        padding: 5px 10px;
+        margin: 10px 0 20px;
+        box-sizing: border-box;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        font-size: 18px;
     }
     button{
         background: $color2;
-        color: white;
+        background: $color5;
+        color: $color2;  
         font-size: 24px;
         cursor: pointer;
         border: 1px solid transparent;
         @include transition(background .3s ease-in-out);
         &:hover{
-            background: $color5;
+            background: $color1;
         }
     }
 }

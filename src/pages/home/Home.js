@@ -1,8 +1,5 @@
-<<<<<<< Updated upstream
-import { getInfo } from '../../services';
 import { Redirect } from 'react-router-dom';
-=======
->>>>>>> Stashed changes
+
 import './home.scss';
 
 class FirstWindow extends Component {
@@ -11,7 +8,6 @@ class FirstWindow extends Component {
 
     return (
       <>
-        !user ? <Redirect to="/startpage" />
         <div className="wrap">
           <h1>Hello, {user.firstName}</h1>
           {

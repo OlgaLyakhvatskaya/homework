@@ -1,4 +1,4 @@
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch, Redirect } from 'react-router-dom';
 import Login from './login';
 import CreateUser from './createUser';
 import Products from './products';
@@ -10,47 +10,6 @@ import Category from './category';
 import Categories from './categories';
 import Product from './product';
 
-<<<<<<< Updated upstream
-export const Pages = () => (
-  <Switch>
-    <Route
-      path="/"
-      exact
-      component={Home}
-    />
-    <Route
-      path="/signin"
-      component={Login}
-    />
-    <Route
-      path="/category"
-      component={Category}
-    />
-    <Route
-      path="/categories"
-      component={Categories}
-    />
-    <Route
-      path="/startpage"
-      component={StartPage}
-    />
-    <Route
-      path="/signup"
-      component={CreateUser}
-    />
-    <Route
-      path="/products"
-      component={Products}
-    />
-    <Route
-      path="/profile"
-      component={UpdateUser}
-    />
-    <Route
-      path="/success"
-      component={SuccessPage}
-    />
-=======
 export const Pages = ({ user, info, listProd }) => (
   <Switch>
     <Route
@@ -114,7 +73,6 @@ export const Pages = ({ user, info, listProd }) => (
           />
         ]
     }
->>>>>>> Stashed changes
     <Route
       render={() => <h3>Not Found</h3>}
       key="notFound"

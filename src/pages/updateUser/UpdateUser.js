@@ -1,8 +1,5 @@
 import Form from '../../components/form';
 
-<<<<<<< Updated upstream
-const UpdateUser = () => <Form />;
-=======
 const UpdateUser = () => {
   return (
     <>
@@ -11,6 +8,5 @@ const UpdateUser = () => {
     </>
   );
 };
->>>>>>> Stashed changes
 
 export default UpdateUser;

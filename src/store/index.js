@@ -1,4 +1,4 @@
-import { 
+import {
   createStore,
   combineReducers,
   applyMiddleware,
@@ -8,10 +8,12 @@ import createSagaMiddleware from 'redux-saga';
 import { rootSaga } from './rootSaga';
 import { user } from './user';
 import { info } from './categories';
+import { error } from './status';
 
 const rootReducers = combineReducers({
   user,
-  info
+  info,
+  error
 });
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
