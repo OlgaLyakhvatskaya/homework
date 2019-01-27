@@ -1,9 +1,8 @@
-import { getInfo } from '../../services';
+import { Redirect } from 'react-router-dom';
 
 import './home.scss';
 
 class FirstWindow extends Component {
-
   render() {
     const { user = {}, info } = this.props;
 
