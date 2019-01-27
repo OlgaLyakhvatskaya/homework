@@ -8,6 +8,7 @@ class Products extends Component {
     originListProd: [],
     listProd: []
   }
+  
 
   static getDerivedStateFromProps(nextProps, prevState) {
     if (nextProps.listProd !== prevState.originListProd) {

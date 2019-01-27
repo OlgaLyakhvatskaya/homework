@@ -23,8 +23,8 @@ class AppComp extends Component {
 
   componentDidMount() {
     this.props.dispatch(checkUser());
-    getListProd()
-      .then(listProd => this.setState({ listProd }));
+    // getListProd()
+    //   .then(listProd => this.setState({ listProd }));
   }
 
   componentDidUpdate(prevProps) {
@@ -53,7 +53,12 @@ class AppComp extends Component {
   }
   render() {
     const { loading, listProd } = this.state;
+<<<<<<< HEAD
+    const { user, info } = this.props;
+
+=======
     const { user, info, history } = this.props;
+>>>>>>> 5c5fb3e0b76a4f004639c8260fa150ecef45e853
     return (
       <>
         <Header
