@@ -4,11 +4,9 @@ import './main.scss';
 class Main extends Component {
   render() {
     return (
-      <main className="main">
-        <div className="container">
-          { this.props.children }
-        </div>
-      </main>
+      <>
+        { this.props.children }
+      </>
     );
   }
 }

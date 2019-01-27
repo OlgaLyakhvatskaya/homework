@@ -8,9 +8,15 @@ import Home from './home';
 import StartPage from './startPage';
 import Category from './category';
 import Categories from './categories';
+import Product from './product';
 
-export const Pages = ({ user, onLogin, info, list }) => (
+export const Pages = ({ user, info, listProd }) => (
   <Switch>
+    <Route
+      path="/products/:id"
+      component={Product}
+      key="product"
+    />,
     {
       user
         ? [
@@ -32,15 +38,15 @@ export const Pages = ({ user, onLogin, info, list }) => (
           />,
           <Route
             path="/products"
-            render={() => <Products list={list} />}
+            render={() => <Products listProd={listProd} />}
             key="products"
           />,
           <Route
             path="/profile"
-            render={({ history }) => <UpdateUser data={user} history={history} />}
+            render={({ history }) => <UpdateUser onLogin={Login} history={history} />}
             key="profile"
           />,
-          <Redirect from="/signin" to="/" />
+          <Redirect from="/signin" to="/" key="redirect" />
         ]
         : [
           <Route
@@ -51,7 +57,7 @@ export const Pages = ({ user, onLogin, info, list }) => (
           />,
           <Route
             path="/signin"
-            render={() => <Login onLogin={onLogin} />}
+            render={() => <Login onLogin={Login} />}
             key="signin"
           />,
           <Route
@@ -69,6 +75,7 @@ export const Pages = ({ user, onLogin, info, list }) => (
     }
     <Route
       render={() => <h3>Not Found</h3>}
+      key="notFound"
     />
   </Switch>
 );

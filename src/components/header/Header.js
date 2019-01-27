@@ -1,12 +1,11 @@
 import { NavLink } from 'react-router-dom';
 import Navigation from '../navigation';
-import { logout } from '../../services';
 
 import './header.scss';
 
-const Header = ({ user, info, onLogout, history }) => {
+const Header = ({ user, info, onLogout }) => {
   const onLogoutHandler = () => {
-    logout().then(onLogout).then(() => history.push('/'));
+    onLogout();
   };
 
   return (

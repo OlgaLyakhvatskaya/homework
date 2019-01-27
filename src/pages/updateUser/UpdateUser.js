@@ -1,14 +1,11 @@
 import Form from '../../components/form';
-import { updateUser } from '../../services';
 
-const UpdateUser = ({ history, data }) => {
-
-  const onSubmit = (data) => {
-    updateUser(data).then(() => history.push('/profile'));
-  };
-
+const UpdateUser = () => {
   return (
-    <Form disabled={{ email: true }} user={data} onSave={onSubmit} />
+    <>
+      <h3>Update User</h3>
+      <Form disabled={{ email: true }} />
+    </>
   );
 };
 

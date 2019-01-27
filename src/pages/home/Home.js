@@ -3,18 +3,9 @@ import { getInfo } from '../../services';
 import './home.scss';
 
 class FirstWindow extends Component {
-  state = {
-    info: null
-  }
-
-  componentDidMount() {
-    getInfo()
-      .then(info => this.setState({ info }));
-  }
 
   render() {
-    const { user = {} } = this.props;
-    const { info } = this.state;
+    const { user = {}, info } = this.props;
 
     return (
       <>

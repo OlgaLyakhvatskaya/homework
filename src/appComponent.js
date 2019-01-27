@@ -1,60 +1,87 @@
+import { withRouter } from 'react-router-dom';
+import { connect } from 'react-redux';
+
+import { checkUser, logout } from './store/user';
+import { getInfo, cleanInfo } from './store/categories';
+import { ToastContainer } from 'react-toastr';
 import Header from './components/header';
 import Main from './components/main';
 import { Pages } from './pages/Pages';
-import { checkUser, getInfo, getListCat } from './services';
 
 import './app.scss';
+import { getListProd } from './services';
+import { cleanError } from './store/status';
 
 class AppComp extends Component {
   state = {
-    user: null,
-    info: null,
-    list: [],
-    loading: true
+    listProd: [],
+    loading: true,
+    product: null
   }
 
   componentDidMount() {
-    checkUser()
-      .then(user => this.setState({ loading: false, user }))
-      .catch(() => this.setState({ loading: false }));
-
-    getListCat()
-      .then(list => this.setState({ list }));
+    this.props.dispatch(checkUser());
+    getListProd()
+      .then(listProd => this.setState({ listProd }));
   }
 
-  componentDidUpdate(prevProps, prevState) {
-    if (!prevState.user && this.state.user) {
-      getInfo()
-        .then(info => this.setState({ info }));
+  componentDidUpdate(prevProps) {
+    if (!prevProps.user && this.props.user) {
+      this.props.dispatch(getInfo());
+    }
+
+    if (prevProps.user && !this.props.user) {
+      this.props.history.push('/');
+    }
+
+    if (!prevProps.error && this.props.error) {
+      this.container.error(
+        this.props.error,
+        "error"
+      );
+      this.props.dispatch(cleanError());
     }
   }
 
-  onLogin = (user) => {
-    this.setState({ user });
+  onLogout = () => {
+    this.props.dispatch(logout());
+    this.props.dispatch(cleanInfo());
   }
 
-  onLogout = () => {
-    this.setState({ user: null });
-  }
 
   render() {
-    const { user, info, loading, list, history } = this.state;
+    const { loading, listProd } = this.state;
+    const { user, info, } = this.props;
 
     return (
       <>
-        <Header user={user} info={info} onLogout={this.onLogout} history={history} />
+        <Header
+          user={user}
+          info={info}
+          onLogout={this.onLogout}
+        />
         <Main>
           <Pages
             user={user}
             info={info}
-            list={list}
+            listProd={listProd}
             onLogin={this.onLogin}
             loading={loading}
           />
         </Main>
+        <ToastContainer
+          ref={ref => this.container = ref}
+          className="toast-top-right"
+        />
       </>
     );
   }
 }
 
-export default AppComp;
+const mapState = state => ({
+  user: state.user,
+  error: state.error,
+  info: state.info
+});
+
+export default withRouter(connect(mapState)(AppComp));
