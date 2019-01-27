@@ -6,9 +6,9 @@ function* checkSaga() {
   let user;
   try {
     user = yield checkUser();
-  } catch (error) {
-      yield put(setUser(user));
-  }
+  } catch {
+    yield put(setUser(user));
+  } 
 }
 
 function* loginSaga(action) {

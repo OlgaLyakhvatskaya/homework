@@ -94,6 +94,7 @@ class UserForm extends Component {
                 placeholder={field.placeholder}
                 onChange={this.onChange}
                 onBlur={this.validate}
+                key={field.label}
                 disabled={disabled[field.label]}
               />
               {state[field.label].error

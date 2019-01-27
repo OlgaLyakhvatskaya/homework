@@ -21,8 +21,8 @@ class AppComp extends Component {
 
   componentDidMount() {
     this.props.dispatch(checkUser());
-    getListProd()
-      .then(listProd => this.setState({ listProd }));
+    // getListProd()
+    //   .then(listProd => this.setState({ listProd }));
   }
 
   componentDidUpdate(prevProps) {
@@ -51,7 +51,7 @@ class AppComp extends Component {
 
   render() {
     const { loading, listProd } = this.state;
-    const { user, info, } = this.props;
+    const { user, info } = this.props;
 
     return (
       <>
