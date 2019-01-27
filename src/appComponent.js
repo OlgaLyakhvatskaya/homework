@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { checkUser, logout } from './store/user';
 import { getInfo, cleanInfo } from './store/categories';
 import { ToastContainer } from 'react-toastr';
+
 import Header from './components/header';
 import Main from './components/main';
 import { Pages } from './pages/Pages';
@@ -11,6 +12,7 @@ import { Pages } from './pages/Pages';
 import './app.scss';
 import { getListProd } from './services';
 import { cleanError } from './store/status';
+
 
 class AppComp extends Component {
   state = {
@@ -40,19 +42,18 @@ class AppComp extends Component {
         "error"
       );
       this.props.dispatch(cleanError());
+
+
     }
-  }
+
 
   onLogout = () => {
     this.props.dispatch(logout());
     this.props.dispatch(cleanInfo());
   }
-
-
   render() {
     const { loading, listProd } = this.state;
-    const { user, info, } = this.props;
-
+    const { user, info, history } = this.props;
     return (
       <>
         <Header
@@ -63,6 +64,7 @@ class AppComp extends Component {
         <Main>
           <Pages
             user={user}
+
             info={info}
             listProd={listProd}
             onLogin={this.onLogin}
