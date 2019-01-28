@@ -1,9 +1,9 @@
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
+import { ToastContainer } from 'react-toastr';
 
 import { checkUser, logout } from './store/user';
 import { getInfo, cleanInfo } from './store/categories';
-import { ToastContainer } from 'react-toastr';
 
 import Header from './components/header';
 import Main from './components/main';
@@ -23,8 +23,8 @@ class AppComp extends Component {
 
   componentDidMount() {
     this.props.dispatch(checkUser());
-    // getListProd()
-    //   .then(listProd => this.setState({ listProd }));
+    getListProd()
+      .then(listProd => this.setState({ listProd }));
   }
 
   componentDidUpdate(prevProps) {
@@ -42,23 +42,17 @@ class AppComp extends Component {
         "error"
       );
       this.props.dispatch(cleanError());
-
-
     }
-
+  }
 
   onLogout = () => {
     this.props.dispatch(logout());
     this.props.dispatch(cleanInfo());
   }
+
   render() {
     const { loading, listProd } = this.state;
-<<<<<<< HEAD
-    const { user, info } = this.props;
-
-=======
     const { user, info, history } = this.props;
->>>>>>> 5c5fb3e0b76a4f004639c8260fa150ecef45e853
     return (
       <>
         <Header
@@ -69,7 +63,6 @@ class AppComp extends Component {
         <Main>
           <Pages
             user={user}
-
             info={info}
             listProd={listProd}
             onLogin={this.onLogin}
