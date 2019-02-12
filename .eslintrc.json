@@ -39,7 +39,7 @@
     "no-nested-ternary": 0,
     "no-unused-expressions": "off",
     "react/destructuring-assignment": "off",
-    "react/prefer-stateless-function": 0
+    "react/prefer-stateless-function": "off"
   },
   "parser": "babel-eslint",
   "settings" : {
