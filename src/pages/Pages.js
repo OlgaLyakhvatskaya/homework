@@ -1,29 +1,35 @@
 import { Route, Switch, Redirect } from 'react-router-dom';
+
 import Login from './login';
 import CreateUser from './createUser';
 import Products from './products';
 import UpdateUser from './updateUser';
-import SuccessPage from './successPage';
+import SuccessPage, { SuccessUpdate, SuccessNewProd } from './successPages';
 import Home from './home';
 import StartPage from './startPage';
 import Category from './category';
 import Categories from './categories';
 import Product from './product';
 
-export const Pages = ({ user, info, listProd }) => (
+export const Pages = ({ user, info }) => (
   <Switch>
     <Route
       path="/products/:id"
-      component={Product}
+      render={({ match }) => <Product match={match} />}
       key="product"
     />,
     {
       user
         ? [
           <Route
+            path="products/new"
+            render={({ history }) => <Product history={history} />}
+            key="newprod"
+          />,
+          <Route
             path="/(home)?"
             exact
-            render={() => <Home info={info} user={user} />}
+            render={({ history }) => <Home user={user} info={info} history={history} />}
             key="home"
           />,
           <Route
@@ -38,13 +44,25 @@ export const Pages = ({ user, info, listProd }) => (
           />,
           <Route
             path="/products"
-            render={() => <Products listProd={listProd} />}
+            render={({ history }) => <Products history={history} />}
             key="products"
           />,
           <Route
             path="/profile"
             render={({ history }) => <UpdateUser onLogin={Login} history={history} />}
             key="profile"
+          />,
+          <Route
+            path="/successupdate"
+            exact
+            component={SuccessUpdate}
+            key="successupdate"
+          />,
+          <Route
+            path="/successnewprod"
+            exact
+            component={SuccessNewProd}
+            key="successnewprod"
           />,
           <Redirect from="/signin" to="/" key="redirect" />
         ]
@@ -54,6 +72,21 @@ export const Pages = ({ user, info, listProd }) => (
             exact
             component={StartPage}
             key="startpage"
+          />,
+          <Route
+            path="/category"
+            component={Category}
+            key="category"
+          />,
+          <Route
+            path="/categories"
+            component={Categories}
+            key="categories"
+          />,
+          <Route
+            path="/products"
+            render={({ history }) => <Products history={history} />}
+            key="products"
           />,
           <Route
             path="/signin"

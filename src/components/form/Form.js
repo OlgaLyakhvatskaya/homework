@@ -26,7 +26,10 @@ class UserForm extends Component {
       { label: 'password', reg: /^[^ ]{6,20}$/, secure: true, placeholder: 'Password' },
       { label: 'repeatPassword', reg: /^[^ ]{6,20}$/, secure: true, placeholder: 'Repeat password' }
     ];
-    this.state = {};
+    this.state = {
+      show: true,
+      showText: false
+    };
 
     this.fields.forEach(({ label }) => this.state[label] = {
       value: '',
@@ -71,12 +74,23 @@ class UserForm extends Component {
     if (this.props.onSave) {
       this.props.onSave(data);
     }
-    // console.log(data);
   }
 
-  getButtonState = () => {
-    Object.entries(this.state).some(([key, { error, value }]) => error || !value);
+  getButtonState() {
+    const { state } = this;
+    const arr = Object.entries(state).filter((el) => {
+      return el[0] !== 'show' && el[0] !== 'showText';
+    }).some(([key, { error, value }]) => error || !value);
+    return (arr);
   }
+
+  showPass = () => {
+    this.setState(prev => ({
+      show: !prev.show,
+      showText: !prev.showText
+    }));
+  }
+
 
   render() {
     const { state } = this;
@@ -85,23 +99,51 @@ class UserForm extends Component {
     return (
       <form className="form" onSubmit={this.onSubmit}>
         {
-          this.fields.map(field => (
-            <div className="wrapper">
-              <input
-                type={field.secure ? 'password' : 'text'}
-                name={field.label}
-                value={state[field.label].value}
-                placeholder={field.placeholder}
-                onChange={this.onChange}
-                onBlur={this.validate}
-                key={field.label}
-                disabled={disabled[field.label]}
-              />
-              {state[field.label].error
-                && <mark>{state[field.label].error}</mark>}
+          this.fields.map((field, index) => (
+            <div className="wrapper" key={index}>
+              {
+                field.secure ? (
+                  <>
+                    <input
+                      type={state.show ? 'password' : 'text'}
+                      name={field.label}
+                      value={state[field.label].value}
+                      placeholder={field.placeholder}
+                      onChange={this.onChange}
+                      onBlur={this.validate}
+                      disabled={disabled[field.label]}
+                    />
+                    {state[field.label].error
+                      && <mark>{state[field.label].error}</mark>}
+                  </>
+                ) : (
+                  <>
+                    <input
+                      type="text"
+                      name={field.label}
+                      value={state[field.label].value}
+                      placeholder={field.placeholder}
+                      onChange={this.onChange}
+                      onBlur={this.validate}
+                      disabled={disabled[field.label]}
+                    />
+                    {state[field.label].error
+                      && <mark>{state[field.label].error}</mark>}
+                  </>
+                )
+              }
             </div>
           ))
         }
+        <button
+          type="button"
+          className="showPass"
+          onClick={this.showPass}
+          disabled={this.getButtonState()}
+        >{
+          state.showText ? 'Hide passwords' : 'Show passwords'
+        }
+        </button>
         <input
           type="submit"
           disabled={this.getButtonState()}

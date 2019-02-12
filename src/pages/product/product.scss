@@ -1,0 +1,10 @@
+@import "src/scss/variables.scss";
+@import "src/scss/mixins.scss";
+
+.single-product{
+  img{
+    max-width: 300px;
+    margin: 0 auto;
+    display: block;
+  }
+}

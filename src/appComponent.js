@@ -5,26 +5,17 @@ import { ToastContainer } from 'react-toastr';
 import { checkUser, logout } from './store/user';
 import { getInfo, cleanInfo } from './store/categories';
 
+
 import Header from './components/header';
 import Main from './components/main';
 import { Pages } from './pages/Pages';
 
 import './app.scss';
-import { getListProd } from './services';
 import { cleanError } from './store/status';
 
-
 class AppComp extends Component {
-  state = {
-    listProd: [],
-    loading: true,
-    product: null
-  }
-
   componentDidMount() {
     this.props.dispatch(checkUser());
-    getListProd()
-      .then(listProd => this.setState({ listProd }));
   }
 
   componentDidUpdate(prevProps) {
@@ -51,9 +42,9 @@ class AppComp extends Component {
   }
 
   render() {
-    const { loading, listProd } = this.state;
-    const { user, info, history } = this.props;
+    const { user, info } = this.props;
     return (
+
       <>
         <Header
           user={user}
@@ -64,9 +55,6 @@ class AppComp extends Component {
           <Pages
             user={user}
             info={info}
-            listProd={listProd}
-            onLogin={this.onLogin}
-            loading={loading}
           />
         </Main>
         <ToastContainer
@@ -80,8 +68,9 @@ class AppComp extends Component {
 
 const mapState = state => ({
   user: state.user,
-  error: state.error,
-  info: state.info
+  info: state.info,
+  error: state.error
 });
 
 export default withRouter(connect(mapState)(AppComp));
+export { AppComp };

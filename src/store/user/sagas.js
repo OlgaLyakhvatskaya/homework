@@ -1,24 +1,43 @@
 import { takeEvery, put, all } from 'redux-saga/effects';
-import { CHECK_USER, setUser, LOGIN_USER, LOGOUT_USER } from './actions';
-import { checkUser, login, logout } from '../../services';
+import { CHECK_USER, setUser, LOGIN_USER, LOGOUT_USER, ADD_USER, UPDATE_USER } from './actions';
+import { checkUser, login, logout, addUser, updateUser } from '../../services';
+import { setError } from '../status';
 
 function* checkSaga() {
   let user;
   try {
     user = yield checkUser();
-  } catch {
     yield put(setUser(user));
-  } 
+  } catch(err){}
 }
 
 function* loginSaga(action) {
-  const user = yield login(action.data);
-  yield put(setUser(user));
+  try {
+    const user = yield login(action.data);
+    yield put(setUser(user));
+  } catch(err){} 
 }
 
 function* logoutSaga() {
-  yield logout();
-  yield put(setUser(null));
+  try {
+    yield logout();
+    yield put(setUser(null));
+  } catch(err){} 
+}
+
+function* addUserSaga(action) {
+  try {
+    yield addUser(action.data);
+  } catch(err) {
+    yield setError(err)
+  } 
+}
+
+function* updateUserSaga(action) {
+  try {
+    const user = yield updateUser(action.data);
+    yield put(setUser(user));
+  } catch (err) {}
 }
 
 export function* watchUser() {
@@ -26,5 +45,7 @@ export function* watchUser() {
     takeEvery(CHECK_USER, checkSaga),
     takeEvery(LOGIN_USER, loginSaga),
     takeEvery(LOGOUT_USER, logoutSaga),
+    takeEvery(ADD_USER, addUserSaga),
+    takeEvery(UPDATE_USER, updateUserSaga),
   ]);
 }

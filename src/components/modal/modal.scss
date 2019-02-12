@@ -1,0 +1,65 @@
+@import "src/scss/variables.scss";
+@import "src/scss/mixins.scss";
+
+.warning{
+    width: 300px;
+    height: 150px;
+    background: white;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    padding: 15px;
+    border: 1px solid $color4;
+    margin: -75px 0 0 -150px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    &:focus{
+        outline: none;
+    }
+    .headerModal{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        h3{
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: $color4;
+            font-size: 20px; 
+            margin: 0;
+        }
+        .close{
+            background: none;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: $color4;
+            font-size: 20px; 
+            font-weight: bold;
+            border: none;
+            cursor: pointer;
+            &:hover,
+            &:focus{
+                outline: none;
+            }
+        }
+    }
+    .buttons{
+        position: static;
+        button{
+            border: 1px solid $color5;
+            padding: 5px 20px;
+            color: $color5;
+            width: auto;
+            height: auto;
+            margin-right: 10px;
+            border-radius: 3px;
+            cursor: pointer;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-size: 16px; 
+            @include transition(all, 0.3s, ease-in-out);
+            &:hover{
+                background: $color5;
+                color: white;
+            }
+        }
+    }
+}

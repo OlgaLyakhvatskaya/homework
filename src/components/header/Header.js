@@ -11,7 +11,7 @@ const Header = ({ user, info, onLogout }) => {
   return (
     <header className="header">
       <div className="container">
-        <strong><a href="/"><img src="./images/logo.png" alt="logo" /></a></strong>
+        <strong><a href="/"><img src="/images/logo.png" alt="logo" /></a></strong>
         {
           user
             ? (
@@ -28,7 +28,13 @@ const Header = ({ user, info, onLogout }) => {
               </>
             )
             : (
-              <Navigation list={['SignIn', 'SignUp']} />
+              <>
+                <Navigation list={['Home', 'Products', 'Categories']} />
+                <div className="user-prof">
+                  <NavLink to="/signin">SingIn</NavLink>
+                  <NavLink to="/signup">SingUp</NavLink>
+                </div>
+              </>
             )
         }
       </div>

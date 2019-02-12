@@ -7,13 +7,18 @@ import {
 import createSagaMiddleware from 'redux-saga';
 import { rootSaga } from './rootSaga';
 import { user } from './user';
-import { info } from './categories';
+import { info, categories, category } from './categories';
 import { error } from './status';
+import { products, product } from './products';
 
 const rootReducers = combineReducers({
   user,
   info,
-  error
+  error,
+  products,
+  product,
+  categories,
+  category
 });
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
@@ -24,6 +29,6 @@ const store = createStore(
   composeEnhancers(applyMiddleware(sagaMiddleware))
 );
 
-sagaMiddleware.run(rootSaga);
+export const runSaga = () => sagaMiddleware.run(rootSaga);
 
 export default store;

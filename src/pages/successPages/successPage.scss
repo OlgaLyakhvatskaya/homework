@@ -9,6 +9,7 @@
         color: darken($color5, 20%);
         font-weight: bold;
         font-size: 24px;
+        margin: 0 20px;
         @include transition(color .3s ease-in-out);
         &:hover{
             color: $color1;

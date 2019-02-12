@@ -1,17 +1,28 @@
-import Form from '../../components/form';
-import { addUser } from '../../services';
+import { connect } from 'react-redux';
 
-const CreateUser = ({ history }) => {
-  const onSubmit = (data) => {
-    addUser(data).then(() => history.push('/success'));
+import { addUser } from '../../store/user';
+import Form from '../../components/form';
+
+class CreateUser extends Component {
+  onSubmit = (data) => {
+    const { history } = this.props;
+    const newData = {
+      ...data,
+      firstName: data.name,
+      lastName: data.surname
+    };
+    this.props.dispatch(addUser(newData));
+    history.push('/success');
   };
 
-  return (
-    <>
-      <h3>Create User</h3>
-      <Form onSave={onSubmit} />
-    </>
-  );
-};
+  render() {
+    return (
+      <>
+        <h3>Create User</h3>
+        <Form onSave={this.onSubmit} />
+      </>
+    );
+  }
+}
 
-export default CreateUser;
+export default connect()(CreateUser);

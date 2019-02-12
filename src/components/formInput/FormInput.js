@@ -1,3 +1,5 @@
+import { connect } from 'react-redux';
+
 import './formInput.scss';
 
 class FormInput extends Component {
@@ -6,8 +8,22 @@ class FormInput extends Component {
     value: ''
   }
 
-  onShowForm = () => {
-    this.setState(prev => ({ print: !prev.print }));
+  static getDerivedStateFromProps(nextProps) {
+    if (nextProps.buttonClick) {
+      return { print: true };
+    }
+    if (!nextProps.buttonClick) {
+      return { print: false };
+    }
+    return null;
+  }
+
+  onShowForm = (event) => {
+    const { value } = this.state;
+    const { addOnBlure } = this.props;
+    if (event.type === 'blur' && addOnBlure) {
+      addOnBlure(value);
+    }
   }
 
   getValue = (event) => {
@@ -16,22 +32,25 @@ class FormInput extends Component {
 
   render() {
     const { value, print } = this.state;
-    const { rows, item } = this.props;
+    const { rows, item, user } = this.props;
     let rowsType;
-
     rows
-      ? rowsType = <textarea type="text" value={value} onChange={this.getValue} onBlur={this.onShowForm} autoFocus>{value}</textarea>
-      : rowsType = <input type="text" value={value || item} onChange={this.getValue} onBlur={this.onShowForm} autoFocus />;
+      ? rowsType = <textarea type="text" value={value || item || ''} onChange={this.getValue} onBlur={this.onShowForm} autoFocus>{value}</textarea>
+      : rowsType = <input type="text" value={value || item || ''} onChange={this.getValue} onBlur={this.onShowForm} autoFocus />;
 
     return (
       <>{
-          print
-            ? rowsType
-            : <span onClick={this.onShowForm} className={value ? 'hasValue' : 'noValue'}>{value || item}</span>
+        user && print
+          ? rowsType
+          : <span onClick={this.onShowForm} className={value ? 'hasValue' : 'noValue'}>{value || item}</span>
         }
       </>
     );
   }
 }
 
-export default FormInput;
+const mapState = state => ({
+  user: state.user
+});
+
+export default connect(mapState)(FormInput);
