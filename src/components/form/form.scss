@@ -5,6 +5,10 @@
   width: 400px;
   margin: 0 auto;
   position: relative;
+  .wrapper{
+    position: relative;
+    padding-bottom: 10px;
+  }
   input{
     display: block;
     width: 100%;
@@ -25,6 +29,10 @@
       &:hover{
         background: $color1;
       }
+      &[disabled]{
+        background: $color3;
+        cursor: not-allowed;
+      }
     }
   }
   mark{
@@ -32,10 +40,28 @@
     background: none;
     position: absolute;
     right: 0;
-    top: 3px;
-    margin-right: -100px;
+    top: 100%;
+    margin-top: -20px;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    font-size: 18px;
+    font-size: 12px;
+  }
+  .showPass{
+    text-align: right;
+    border: 1px solid $color5;
+    font-size: 14px;
+    border-radius: 3px;
+    color: $color4;
+    background: none;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: bold;
+    cursor: pointer; 
+    opacity: .6;
+    @include transition(all, 0.2s, ease-in-out);
+    &:hover,
+    &:focus{
+      opacity: 1;
+      outline: none;
+    }
   }
 }
 

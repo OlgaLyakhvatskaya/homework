@@ -1,0 +1,57 @@
+@import "src/scss/variables.scss";
+@import "src/scss/mixins.scss";
+
+.unpublished,
+.published{
+    padding: 0;
+    margin: 20px;
+    list-style: none;
+    width: 400px;
+    padding: 10px;
+    border: 1px solid $color5;
+    border-radius: 3px;
+    li{
+        cursor: pointer;
+        font-size: 16px;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        position: relative;
+        .buttons{
+            top: 0;
+            right: 0;
+            button{
+                width: 10px;
+                cursor: pointer;
+                background: none;
+                border: none;
+                &:hover,
+                &:focus{
+                    outline: none;
+                }
+            }
+        }
+    }
+    input{
+        display: block;
+        width: 100%;
+        border: 1px solid lighten($color4, 20%);
+        border-radius: 3px;
+        padding: 5px 10px;
+        margin: 10px 0 20px;
+        box-sizing: border-box;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        font-size: 18px;
+    }
+}
+p{
+    font-size: 18px;
+    text-align: center;
+    color: $color4;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.control-items{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: stretch;
+}

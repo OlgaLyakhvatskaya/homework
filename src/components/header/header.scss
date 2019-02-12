@@ -29,6 +29,19 @@
             font-size: 18px;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             position: relative;
+            a{
+                @include text();
+                color: $color2;
+                text-decoration: none;
+                margin: 0 10px; 
+                @include transition(color, .3s, ease-in-out);
+                &:hover{
+                    color: $color4; 
+                }
+                &.active{
+                    color: lighten($color4, 20%);
+                }
+            }
             .user-menu{
                 position: absolute;
                 top: 100%;
@@ -48,11 +61,15 @@
                         cursor: pointer;
                         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
                         color: $color1;
+                        width: 100%;
+                        text-align: left;
+                        margin: 0 auto 10px;
                         text-decoration: none;
-                        margin-bottom: 10px;
                         @include transition(color, .3s, ease-in-out);
-                        &:hover{
-                            color: lighten($color1, 20%);
+                        &:hover,
+                        &:focus{
+                          color: lighten($color1, 20%);
+                          outline: none;
                         }
                     }
                 }

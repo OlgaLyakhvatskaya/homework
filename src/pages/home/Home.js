@@ -1,8 +1,13 @@
-import { Redirect } from 'react-router-dom';
-
 import './home.scss';
 
 class FirstWindow extends Component {
+  onClickHand = () => {
+    const { history } = this.props;
+
+    event.preventDefault();
+    history.push('/categories');
+  }
+
   render() {
     const { user = {}, info } = this.props;
 
@@ -19,7 +24,7 @@ class FirstWindow extends Component {
                 </ul>
               )
           }
-          <a className="link" href="/categories">Go to categories</a>
+          <a className="link" href="#" onClick={this.onClickHand} >Go to categories</a>
         </div>
       </>
     );

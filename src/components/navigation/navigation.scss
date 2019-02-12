@@ -2,9 +2,7 @@
 @import "src/scss/mixins.scss";
 
 .index-menu{
-    a,
-    &.singin,
-    &.singup{
+    a{
         @include text();
         color: $color2;
         text-decoration: none;

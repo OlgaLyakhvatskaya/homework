@@ -2,19 +2,28 @@
 @import "src/scss/mixins.scss";
 
 .buttons{
-    position: absolute;
-    top:0;
-    right: 0;
-    a{
-        text-decoration: none;
-        display: inline-block;
-        width: 20px;
-        height: 20px;
-        padding: 5px;
-        background: white;
-        z-index: 10;
-        img{
-            max-width: 100%;
-        }
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 10;
+  button{
+    text-decoration: none;
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    padding: 5px;
+    background: white;
+    margin-right: 5px;
+    border: none;
+    background: none;
+    cursor: pointer;
+    padding: 0;
+    &:hover,
+    &:focus{
+      outline: none;
     }
+    img{
+      max-width: 100%;
+    }
+  }
 }
